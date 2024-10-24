@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Function declarations
 int add(int x, int y) {
     return x + y;
 }
@@ -90,6 +91,8 @@ int main() {
                 scanf("%d", &a);
                 if (a != 0) {
                     printf("The inverse of %d is %.2f\n", a, inverse(a));
+                } else {
+                    printf("Inverse is not defined for 0.\n");
                 }
                 break;
             default:
