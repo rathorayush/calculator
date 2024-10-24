@@ -1,23 +1,35 @@
 #include <stdio.h>
 
-int add(int i, int j) {
-    return (i + j);
+int add(int x, int y) {
+    return x + y;
 }
 
-int subtract(int i, int j) {
-    return (i - j);
+int subtract(int x, int y) {
+    return x - y;
 }
 
-int multiply(int i, int j) {
-    return (i * j);
+int multiply(int x, int y) {
+    return x * y;
 }
 
-float divide(int i, int j) {
-    if (j == 0) {
-        printf("Error: Division by zero is not allowed.\n");
-        return 0; // Return 0 to indicate an error.
+float divide(int x, int y) {
+    return (float)x / y;
+}
+
+int square(int x) {
+    return x * x;
+}
+
+int cube(int x) {
+    return x * x * x;
+}
+
+float inverse(int x) {
+    if (x == 0) {
+        printf("Inverse undefined for 0.\n");
+        return 0;
     }
-    return ((float) i / j);  // Explicit type casting to float for decimal results.
+    return 1.0 / x;
 }
 
 int main() {
@@ -34,7 +46,7 @@ int main() {
         printf("^: Square of a number\n");
         printf("#: Cube of a number\n");
         printf("i: Inverse of a number\n");
-        
+
         printf("Enter operation: ");
         scanf(" %c", &operation);
 
@@ -59,30 +71,35 @@ int main() {
                 scanf("%d %d", &a, &b);
                 if (b != 0) {
                     printf("The result of %d / %d is %.2f\n", a, b, divide(a, b));
+                } else {
+                    printf("Division by zero is not allowed.\n");
                 }
                 break;
             case '^':
                 printf("Enter an integer: ");
                 scanf("%d", &a);
-                printf("Will be implemented soon...\n");
+                printf("The square of %d is %d\n", a, square(a));
                 break;
             case '#':
                 printf("Enter an integer: ");
                 scanf("%d", &a);
-                printf("Will be implemented soon...\n");
+                printf("The cube of %d is %d\n", a, cube(a));
                 break;
             case 'i':
                 printf("Enter an integer: ");
                 scanf("%d", &a);
-                printf("Will be implemented soon...\n");
+                if (a != 0) {
+                    printf("The inverse of %d is %.2f\n", a, inverse(a));
+                }
                 break;
             default:
-                printf("Invalid operation. Please try again.\n");
+                printf("Invalid operation.\n");
         }
 
-        printf("Do you want to perform another operation [y/N]? ");
+        printf("Do you want to perform another operation? (y/n): ");
         scanf(" %c", &confirm);
-    } while (confirm == 'y' || confirm == 'Y');
+    } while (confirm == 'y');
 
     return 0;
 }
+
